@@ -87,15 +87,13 @@ def blend(img_target, img_source, img_mask, offset=(0, 0)):
 
 
 def test():
-    # asarray:参照のみ、array:現物
     img_mask = np.array(PIL.Image.open('./testimages/test1_mask.png'))
     img_mask.flags.writeable = True
-    img_source = np.array(PIL.Image.open('./testimages/test1_src.png'))
+    img_source = np.array(PIL.Image.open('testimages/source/test1_src.png'))
     img_source.flags.writeable = True
-    img_target = np.array(PIL.Image.open('./testimages/test1_target.png'))
+    img_target = np.array(PIL.Image.open('testimages/target/test1_target.png'))
     img_target.flags.writeable = True
-    # offsetの位置がノブの表面になるようにランダムに決定したい
-    img_ret = blend(img_target, img_source, img_mask, offset=(40, -20))
+    img_ret = blend(img_target, img_source, img_mask, offset=(40, -100))
     img_ret = PIL.Image.fromarray(np.uint8(img_ret))
     img_ret.save('./testimages/test1_ret.png')
 
